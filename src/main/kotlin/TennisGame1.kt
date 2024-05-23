@@ -15,11 +15,17 @@ class TennisGame1(private val player1Name: String, private val player2Name: Stri
 
     private fun isTie() = scorePlayer1 == scorePlayer2
 
-    private fun gameStatus(): String {
-        val player1Status = PlayerStatus.fromInt(scorePlayer1).toString()
-        val player2Status = PlayerStatus.fromInt(scorePlayer2).toString()
-        return "$player1Status-$player2Status"
+    private fun tie(): String {
+        val tie = when (scorePlayer1) {
+            0 -> "Love-All"
+            1 -> "Fifteen-All"
+            2 -> "Thirty-All"
+            else -> "Deuce"
+        }
+        return tie
     }
+
+    private fun playerAdvantage() = scorePlayer1 >= 4 || scorePlayer2 >= 4
 
     private fun advantageOrWinOfPlayer(): String {
         val scoreDifference = scorePlayer1 - scorePlayer2
@@ -32,15 +38,10 @@ class TennisGame1(private val player1Name: String, private val player2Name: Stri
         return advantageOrWinOfPlayer
     }
 
-    private fun playerAdvantage() = scorePlayer1 >= 4 || scorePlayer2 >= 4
-
-    private fun tie(): String {
-        val tie = when (scorePlayer1) {
-            0 -> "Love-All"
-            1 -> "Fifteen-All"
-            2 -> "Thirty-All"
-            else -> "Deuce"
-        }
-        return tie
+    private fun gameStatus(): String {
+        val player1Status = PlayerStatus.fromInt(scorePlayer1).toString()
+        val player2Status = PlayerStatus.fromInt(scorePlayer2).toString()
+        return "$player1Status-$player2Status"
     }
+
 }
