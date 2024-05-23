@@ -38,8 +38,7 @@ class TennisGame1(private val player1Name: String, private val player2Name: Stri
     }
 
     private fun tie(score: String): String {
-        var score1 = score
-        score1 = when (scorePlayer1) {
+        val score1: String = when (scorePlayer1) {
             0 -> "Love-All"
             1 -> "Fifteen-All"
             2 -> "Thirty-All"
