@@ -4,7 +4,11 @@ class TennisGame1(private val player1Name: String, private val player2Name: Stri
     private var scorePlayer2: Int = 0
 
     override fun wonPoint(playerName: String) =
-        if (playerName == "player1") scorePlayer1 += 1 else scorePlayer2 += 1
+        if (playerName == "player1") {
+            scorePlayer1 += 1
+        } else {
+            scorePlayer2 += 1
+        }
 
     override fun getScore() =
         when {
@@ -31,9 +35,9 @@ class TennisGame1(private val player1Name: String, private val player2Name: Stri
 
     private fun hasWon() = scorePlayer1 >= 4 || scorePlayer2 >= 4
 
-    private fun advantage(): String = when (difference()) {
-        1 -> "Advantage player1"
-        -1 -> "Advantage player2"
+    private fun advantage(): String = when  {
+        difference() ==1 -> "Advantage player1"
+        difference() == -1 -> "Advantage player2"
         else -> ""
     }
 
