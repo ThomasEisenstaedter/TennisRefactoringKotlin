@@ -10,6 +10,7 @@ class TennisGame1(private val player1Name: String, private val player2Name: Stri
         when {
             isTie() -> tie()
             playerAdvantage() -> advantageOrWinOfPlayer()
+            playerAdvantage2() -> winOfPlayer()
             else -> gameStatus()
         }
 
@@ -25,7 +26,10 @@ class TennisGame1(private val player1Name: String, private val player2Name: Stri
         return tie
     }
 
-    private fun playerAdvantage() = scorePlayer1 >= 4 || scorePlayer2 >= 4
+    private fun playerAdvantage(): Boolean {
+        val scoreDifference = scorePlayer1 - scorePlayer2
+        return scorePlayer1 >= 4 && scoreDifference == 1|| scorePlayer2 >= 4 && scoreDifference == -1
+    }
     private fun playerAdvantage2() = scorePlayer1 >= 4 || scorePlayer2 >= 4
 
     private fun advantageOrWinOfPlayer(): String {
