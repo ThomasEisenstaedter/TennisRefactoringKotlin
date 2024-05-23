@@ -8,7 +8,7 @@ class TennisGame1(private val player1Name: String, private val player2Name: Stri
 
     override fun getScore(): String {
         var score = ""
-        var tempScore: Int
+        var currentScore: Int
         if (scorePlayer1 == scorePlayer2) {
             score = tie()
         } else if (onePlayerHas4OrMorePoints()) {
@@ -17,12 +17,12 @@ class TennisGame1(private val player1Name: String, private val player2Name: Stri
         } else {
             for (i in 1..2) {
                 if (i == 1)
-                    tempScore = scorePlayer1
+                    currentScore = scorePlayer1
                 else {
                     score += "-"
-                    tempScore = scorePlayer2
+                    currentScore = scorePlayer2
                 }
-                score += playerStatus(tempScore)
+                score += playerStatus(currentScore)
             }
         }
         return score
