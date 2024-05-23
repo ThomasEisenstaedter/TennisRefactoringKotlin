@@ -9,8 +9,8 @@ class TennisGame1(private val player1Name: String, private val player2Name: Stri
     override fun getScore() =
         when {
             isTie() -> tie()
-            playerAdvantage() -> advantageOfPlayer()
-            playerAdvantage2() -> winOfPlayer()
+            playerAdvantage() -> advantage()
+            playerWin() -> win()
             else -> gameStatus()
         }
 
@@ -30,9 +30,9 @@ class TennisGame1(private val player1Name: String, private val player2Name: Stri
         val scoreDifference = scorePlayer1 - scorePlayer2
         return scorePlayer1 >= 4 && scoreDifference == 1|| scorePlayer2 >= 4 && scoreDifference == -1
     }
-    private fun playerAdvantage2() = scorePlayer1 >= 4 || scorePlayer2 >= 4
+    private fun playerWin() = scorePlayer1 >= 4 || scorePlayer2 >= 4
 
-    private fun advantageOfPlayer(): String {
+    private fun advantage(): String {
         return when (scorePlayer1 - scorePlayer2) {
             1 -> "Advantage player1"
             -1 -> "Advantage player2"
@@ -40,7 +40,7 @@ class TennisGame1(private val player1Name: String, private val player2Name: Stri
         }
     }
 
-    private fun winOfPlayer(): String {
+    private fun win(): String {
         val scoreDifference = scorePlayer1 - scorePlayer2
         return if (scoreDifference >= 2) {
             "Win for player1"
