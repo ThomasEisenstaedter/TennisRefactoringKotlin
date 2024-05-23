@@ -32,12 +32,11 @@ class TennisGame1(private val player1Name: String, private val player2Name: Stri
         return when (scoreDifference) {
             1 -> "Advantage player1"
             -1 -> "Advantage player2"
-            else -> winOfPlayer()
+            else -> winOfPlayer(scoreDifference)
         }
     }
 
-    private fun winOfPlayer(): String {
-        val scoreDifference = scorePlayer1 - scorePlayer2
+    private fun winOfPlayer(scoreDifference: Int): String {
         return if (scoreDifference >= 2) {
             "Win for player1"
         } else {
