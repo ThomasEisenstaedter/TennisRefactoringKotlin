@@ -11,7 +11,7 @@ class TennisGame1(private val player1Name: String, private val player2Name: Stri
         when {
             isTie() -> score = tie()
             onePlayerHas4OrMorePoints() -> score = advantageOrWinOf()
-            else -> score += gameStatus()
+            else -> score = gameStatus()
         }
         return score
     }
