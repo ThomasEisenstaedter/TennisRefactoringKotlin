@@ -13,7 +13,7 @@ class TennisGame1(private val player1Name: String, private val player2Name: Stri
             score = tie()
         } else if (onePlayerHas4OrMorePoints()) {
             val scoreDifference = scorePlayer1 - scorePlayer2
-            score = advantageOrWinOfPlayer(scoreDifference)
+            score = advantageOrWinOf(scoreDifference)
         } else {
             for (i in 1..2) {
                 if (i == 1)
@@ -33,7 +33,7 @@ class TennisGame1(private val player1Name: String, private val player2Name: Stri
         return score
     }
 
-    private fun advantageOrWinOfPlayer(minusResult: Int): String {
+    private fun advantageOrWinOf(minusResult: Int): String {
         val advantageOrWinOfPlayer = when {
             minusResult == 1 -> "Advantage player1"
             minusResult == -1 -> "Advantage player2"
