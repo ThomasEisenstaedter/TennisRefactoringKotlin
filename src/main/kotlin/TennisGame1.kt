@@ -15,18 +15,17 @@ class TennisGame1(private val player1Name: String, private val player2Name: Stri
             val scoreDifference = scorePlayer1 - scorePlayer2
             score = advantageOrWinOf(scoreDifference)
         } else {
-            for (i in 1..2) {
-                if (i == 1)
-                    currentScore = scorePlayer1
-                else {
-                    score += "-"
-                    currentScore = scorePlayer2
-                }
-                score += playerStatus(currentScore)
-            }
+
+                score += playerStatus(scorePlayer1)
+                score += "-"
+                score += playerStatus(scorePlayer2)
+
+
+
         }
         return score
     }
+
 
     private fun playerStatus(tempScore: Int): String {
         return when (tempScore) {
