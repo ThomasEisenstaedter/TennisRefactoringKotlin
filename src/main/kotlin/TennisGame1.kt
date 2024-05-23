@@ -9,12 +9,7 @@ class TennisGame1(private val player1Name: String, private val player2Name: Stri
         var score = ""
         var tempScore = 0
         if (scorePlayer1 == scorePlayer2) {
-            score = when (scorePlayer1) {
-                0 -> "Love-All"
-                1 -> "Fifteen-All"
-                2 -> "Thirty-All"
-                else -> "Deuce"
-            }
+            score = tie(score)
         } else if (scorePlayer1 >= 4 || scorePlayer2 >= 4) {
             val minusResult = scorePlayer1 - scorePlayer2
             score = if (minusResult == 1)
@@ -42,5 +37,16 @@ class TennisGame1(private val player1Name: String, private val player2Name: Stri
             }
         }
         return score
+    }
+
+    private fun tie(score: String): String {
+        var score1 = score
+        score1 = when (scorePlayer1) {
+            0 -> "Love-All"
+            1 -> "Fifteen-All"
+            2 -> "Thirty-All"
+            else -> "Deuce"
+        }
+        return score1
     }
 }
