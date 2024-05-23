@@ -3,14 +3,15 @@ class TennisGame1(private val player1Name: String, private val player2Name: Stri
     private var scorePlayer1: Int = 0
     private var scorePlayer2: Int = 0
 
-    override fun wonPoint(playerName: String) = if (playerName === "player1") scorePlayer1 += 1 else scorePlayer2 += 1
+    override fun wonPoint(playerName: String) =
+        if (playerName === "player1") scorePlayer1 += 1 else scorePlayer2 += 1
 
     override fun getScore(): String {
         var score = ""
         var tempScore: Int
         if (scorePlayer1 == scorePlayer2) {
             score = tie()
-        } else if (scorePlayer1 >= 4 || scorePlayer2 >= 4) {
+        } else if (onePlayerHas4OrMorePoints()) {
             val minusResult = scorePlayer1 - scorePlayer2
             score = when {
                 minusResult == 1 -> "Advantage player1"
@@ -36,6 +37,8 @@ class TennisGame1(private val player1Name: String, private val player2Name: Stri
         }
         return score
     }
+
+    private fun onePlayerHas4OrMorePoints() = scorePlayer1 >= 4 || scorePlayer2 >= 4
 
     private fun tie(): String {
         val score1: String = when (scorePlayer1) {
