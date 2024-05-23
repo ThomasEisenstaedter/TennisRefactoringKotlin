@@ -47,12 +47,12 @@ class TennisGame1(private val player1Name: String, private val player2Name: Stri
     private fun onePlayerHas4OrMorePoints() = scorePlayer1 >= 4 || scorePlayer2 >= 4
 
     private fun tie(): String {
-        val score1: String = when (scorePlayer1) {
+        val tie = when (scorePlayer1) {
             0 -> "Love-All"
             1 -> "Fifteen-All"
             2 -> "Thirty-All"
             else -> "Deuce"
         }
-        return score1
+        return tie
     }
 }
