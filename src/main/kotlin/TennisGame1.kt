@@ -14,9 +14,7 @@ class TennisGame1(private val player1Name: String, private val player2Name: Stri
             val scoreDifference = scorePlayer1 - scorePlayer2
             score = advantageOrWinOf(scoreDifference)
         } else {
-            score += PlayerStatus.fromInt(scorePlayer1).toString()
-            score += "-"
-            score += PlayerStatus.fromInt(scorePlayer2).toString()
+            score += gameStatus()
         }
         return score
     }
