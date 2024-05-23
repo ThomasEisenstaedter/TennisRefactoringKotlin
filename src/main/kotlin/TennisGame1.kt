@@ -7,13 +7,11 @@ class TennisGame1(private val player1Name: String, private val player2Name: Stri
         if (playerName == "player1") scorePlayer1 += 1 else scorePlayer2 += 1
 
     override fun getScore(): String {
-        var score = ""
-        when {
-            isTie() -> score = tie()
-            onePlayerHas4OrMorePoints() -> score = advantageOrWinOf()
-            else -> score = gameStatus()
+        return when {
+            isTie() -> tie()
+            onePlayerHas4OrMorePoints() -> advantageOrWinOf()
+            else -> gameStatus()
         }
-        return score
     }
 
     private fun isTie() = scorePlayer1 == scorePlayer2
