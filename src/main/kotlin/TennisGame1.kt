@@ -34,14 +34,13 @@ class TennisGame1(private val player1Name: String, private val player2Name: Stri
     }
 
     private fun advantageOrWinOfPlayer(score: String, minusResult: Int): String {
-        var score1 = score
-        score1 = when {
+        var advantageOrWinOfPlayer = when {
             minusResult == 1 -> "Advantage player1"
             minusResult == -1 -> "Advantage player2"
             minusResult >= 2 -> "Win for player1"
             else -> "Win for player2"
         }
-        return score1
+        return advantageOrWinOfPlayer
     }
 
     private fun onePlayerHas4OrMorePoints() = scorePlayer1 >= 4 || scorePlayer2 >= 4
