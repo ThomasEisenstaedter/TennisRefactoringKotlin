@@ -22,15 +22,26 @@ class TennisGame1(private val player1Name: String, private val player2Name: Stri
                     score += "-"
                     tempScore = scorePlayer2
                 }
-                when (tempScore) {
-                    0 -> score += "Love"
-                    1 -> score += "Fifteen"
-                    2 -> score += "Thirty"
-                    3 -> score += "Forty"
-                }
+                score +=      playerStatus(tempScore)
+
+
+
+
+
+
             }
         }
         return score
+    }
+
+    private fun playerStatus(tempScore: Int): String {
+          return when (tempScore) {
+              0 -> "Love"
+              1 -> "Fifteen"
+              2 ->  "Thirty"
+              3 -> "Forty"
+              else -> ""
+          }
     }
 
     private fun advantageOrWinOf(minusResult: Int): String {
