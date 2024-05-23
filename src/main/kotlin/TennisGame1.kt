@@ -8,7 +8,6 @@ class TennisGame1(private val player1Name: String, private val player2Name: Stri
 
     override fun getScore(): String {
         var score = ""
-        var currentScore: Int
         if (scorePlayer1 == scorePlayer2) {
             score = tie()
         } else if (onePlayerHas4OrMorePoints()) {
