@@ -7,19 +7,17 @@ class TennisGame1(private val player1Name: String, private val player2Name: Stri
 
     override fun getScore(): String {
         var score = ""
-        var tempScore = 0
+        var tempScore: Int
         if (scorePlayer1 == scorePlayer2) {
             score = tie(score)
         } else if (scorePlayer1 >= 4 || scorePlayer2 >= 4) {
             val minusResult = scorePlayer1 - scorePlayer2
-            score = if (minusResult == 1)
-                "Advantage player1"
-            else if (minusResult == -1)
-                "Advantage player2"
-            else if (minusResult >= 2)
-                "Win for player1"
-            else
-                "Win for player2"
+            score = when {
+                minusResult == 1 -> "Advantage player1"
+                minusResult == -1 -> "Advantage player2"
+                minusResult >= 2 -> "Win for player1"
+                else -> "Win for player2"
+            }
         } else {
             for (i in 1..2) {
                 if (i == 1)
