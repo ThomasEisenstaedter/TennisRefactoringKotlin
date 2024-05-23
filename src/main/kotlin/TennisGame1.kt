@@ -21,7 +21,11 @@ class TennisGame1(private val player1Name: String, private val player2Name: Stri
         return score
     }
 
-    private fun gameStatus() = ""
+    private fun gameStatus(): String {
+        val player1Status = PlayerStatus.fromInt(scorePlayer1).toString()
+        val player2Status = PlayerStatus.fromInt(scorePlayer2).toString()
+        return "$player1Status-$player2Status"
+    }
 
     private fun advantageOrWinOf(minusResult: Int): String {
         val advantageOrWinOfPlayer = when {
