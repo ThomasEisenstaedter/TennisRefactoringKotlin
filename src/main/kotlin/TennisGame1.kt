@@ -4,7 +4,7 @@ class TennisGame1(private val player1Name: String, private val player2Name: Stri
     private var scorePlayer2: Int = 0
 
     override fun wonPoint(playerName: String) =
-        if (playerName === "player1") scorePlayer1 += 1 else scorePlayer2 += 1
+        if (playerName == "player1") scorePlayer1 += 1 else scorePlayer2 += 1
 
     override fun getScore(): String {
         var score = ""
