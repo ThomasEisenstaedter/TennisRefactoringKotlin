@@ -28,8 +28,7 @@ class TennisGame1(private val player1Name: String, private val player2Name: Stri
     private fun playerAdvantage() = scorePlayer1 >= 4 || scorePlayer2 >= 4
 
     private fun advantageOrWinOfPlayer(): String {
-        val scoreDifference = scorePlayer1 - scorePlayer2
-        return when (scoreDifference) {
+        return when (val scoreDifference = scorePlayer1 - scorePlayer2) {
             1 -> "Advantage player1"
             -1 -> "Advantage player2"
             else -> winOfPlayer(scoreDifference)
