@@ -26,28 +26,24 @@ class TennisGame1(private val player1Name: String, private val player2Name: Stri
         return tie
     }
 
-    private fun hasAdvantage(): Boolean {
-        val scoreDifference = scorePlayer1 - scorePlayer2
-        return scorePlayer1 >= 4 && scoreDifference == 1|| scorePlayer2 >= 4 && scoreDifference == -1
-    }
+    private fun hasAdvantage() =
+        scorePlayer1 >= 4 && difference() == 1 || scorePlayer2 >= 4 && difference() == -1
+
     private fun hasWon() = scorePlayer1 >= 4 || scorePlayer2 >= 4
 
-    private fun advantage(): String {
-        return when (scorePlayer1 - scorePlayer2) {
-            1 -> "Advantage player1"
-            -1 -> "Advantage player2"
-            else -> ""
-        }
+    private fun advantage(): String = when (difference()) {
+        1 -> "Advantage player1"
+        -1 -> "Advantage player2"
+        else -> ""
     }
 
-    private fun won(): String {
-        val scoreDifference = scorePlayer1 - scorePlayer2
-        return if (scoreDifference >= 2) {
-            "Win for player1"
-        } else {
-            "Win for player2"
-        }
+    private fun won() = when {
+        difference() >= 2 -> "Win for player1"
+        difference() <= -2 -> "Win for player2"
+        else -> ""
     }
+
+    private fun difference() = scorePlayer1 - scorePlayer2
 
     private fun gameStatus(): String {
         val player1Status = PlayerStatus.fromInt(scorePlayer1).toString()
