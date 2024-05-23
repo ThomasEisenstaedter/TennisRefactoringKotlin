@@ -27,11 +27,11 @@ class TennisGame1(private val player1Name: String, private val player2Name: Stri
         return "$player1Status-$player2Status"
     }
 
-    private fun advantageOrWinOf(minusResult: Int): String {
+    private fun advantageOrWinOf(scoreDifference: Int): String {
         val advantageOrWinOfPlayer = when {
-            minusResult == 1 -> "Advantage player1"
-            minusResult == -1 -> "Advantage player2"
-            minusResult >= 2 -> "Win for player1"
+            scoreDifference == 1 -> "Advantage player1"
+            scoreDifference == -1 -> "Advantage player2"
+            scoreDifference >= 2 -> "Win for player1"
             else -> "Win for player2"
         }
         return advantageOrWinOfPlayer
