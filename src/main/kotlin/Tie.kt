@@ -1,0 +1,2 @@
+enum class Tie {
+}
